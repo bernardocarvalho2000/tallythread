@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Etsy Fee Calculator — Fees, Profit &amp; Break-Even Price (Free)</title>
+<meta name="description" content="Free Etsy fee calculator. See the listing, transaction, payment processing, regulatory and Offsite Ads fees on any order, plus your net profit, margin and break-even price. US, UK, EU, Canada, Australia.">
+<link rel="canonical" href="https://bernardocarvalho2000.github.io/tallythread/etsy-fee-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Etsy Fee & Profit Calculator">
+<meta property="og:description" content="Work out every Etsy fee on an order, your net profit, margin and the price you need for a target margin.">
+<meta property="og:url" content="https://bernardocarvalho2000.github.io/tallythread/etsy-fee-calculator/">
+<meta property="og:image" content="https://bernardocarvalho2000.github.io/tallythread/assets/preview-dashboard.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Etsy Fee & Profit Calculator",
+      "url": "https://bernardocarvalho2000.github.io/tallythread/etsy-fee-calculator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any (runs in the browser)",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "TallyThread" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How much does Etsy take per sale?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For a US seller, Etsy charges a $0.20 listing fee, a 6.5% transaction fee on the item price plus shipping, and a payment processing fee of 3% plus $0.25. On a $25 item with $5 shipping that is $3.30, about 11% of the order. Offsite Ads (15% or 12%) and regulatory operating fees can add more. Check Etsy's fee page for current rates." } },
+        { "@type": "Question", "name": "Does Etsy charge fees on shipping?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The 6.5% transaction fee and the payment processing fee are both charged on the shipping amount you charge the buyer, not just the item price." } },
+        { "@type": "Question", "name": "What is the Etsy Offsite Ads fee?",
+          "acceptedAnswer": { "@type": "Answer", "text": "If a buyer clicks an Etsy ad on another site and buys within 30 days, Etsy charges an Offsite Ads fee of 15% of the order total, or 12% for shops that made over $10,000 in the past 12 months. The fee is capped at $100 per order." } },
+        { "@type": "Question", "name": "What is the Etsy regulatory operating fee?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sellers in some countries, including the UK, France, Italy, Spain, Canada, Türkiye, India, Vietnam and Hungary, pay an extra percentage on each order to cover local regulatory costs. The rate differs by country; check Etsy's fee page." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">TallyThread</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#how-fees-work">How Etsy fees work</a>
+      <a href="../">Shop Profit Tracker</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" style="padding-bottom:16px">
+    <div class="wrap">
+      <p class="eyebrow">Free tool</p>
+      <h1>Etsy Fee &amp; Profit Calculator</h1>
+      <p class="lead">Enter an order to see every Etsy fee, what you actually keep, your margin, and the price you'd need to hit a target margin.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap calc-grid">
+      <form id="calc" novalidate>
+        <fieldset>
+          <legend>Your shop</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="region">Seller region</label>
+              <select id="region">
+                <option value="us">United States (USD)</option>
+                <option value="uk">United Kingdom (GBP)</option>
+                <option value="eu">European Union (EUR)</option>
+                <option value="ca">Canada (CAD)</option>
+                <option value="au">Australia (AUD)</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="quantity">Quantity</label>
+              <input id="quantity" type="number" inputmode="numeric" min="1" step="1" value="1">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>The order (<span class="cur">$</span>)</legend>
+          <div class="fields">
+            <div class="field"><label for="price">Item price (each)</label><input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="25"></div>
+            <div class="field"><label for="shipping">Shipping charged to buyer</label><input id="shipping" type="number" inputmode="decimal" min="0" step="0.01" value="5"></div>
+            <div class="field"><label for="discount">Discount (amount off order)</label><input id="discount" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your costs (<span class="cur">$</span>)</legend>
+          <div class="fields">
+            <div class="field"><label for="itemCost">Item cost (each)</label><input id="itemCost" type="number" inputmode="decimal" min="0" step="0.01" value="6"><span class="hint">Materials and packaging</span></div>
+            <div class="field"><label for="shippingCost">Your shipping cost</label><input id="shippingCost" type="number" inputmode="decimal" min="0" step="0.01" value="4.50"><span class="hint">What the label costs you</span></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Fee rates (editable)</legend>
+          <div class="fields">
+            <div class="field"><label for="listing">Listing fee per item</label><input id="listing" type="number" inputmode="decimal" min="0" step="0.01"><span class="hint">USD 0.20, billed in your currency</span></div>
+            <div class="field"><label for="transactionPct">Transaction fee %</label><input id="transactionPct" type="number" inputmode="decimal" min="0" step="0.1"></div>
+            <div class="field"><label for="processingPct">Processing fee %</label><input id="processingPct" type="number" inputmode="decimal" min="0" step="0.1"></div>
+            <div class="field"><label for="processingFixed">Processing fixed fee</label><input id="processingFixed" type="number" inputmode="decimal" min="0" step="0.01"></div>
+            <div class="field">
+              <label for="offsiteAdsPct">Offsite Ads</label>
+              <select id="offsiteAdsPct">
+                <option value="0">No Offsite Ads sale</option>
+                <option value="15">15% (standard)</option>
+                <option value="12">12% (shops over $10k/yr)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="regulatoryPct">Regulatory operating fee %</label>
+              <input id="regulatoryPct" type="number" inputmode="decimal" min="0" step="0.01" value="0" aria-describedby="reg-hint">
+              <span class="hint" id="reg-hint">UK, France, Italy, Spain, Canada, Türkiye, India, Vietnam, Hungary sellers pay a regulatory operating fee — check Etsy's fee page for your current rate.</span>
+            </div>
+            <div class="field"><label for="targetMarginPct">Target margin % (for break-even price)</label><input id="targetMarginPct" type="number" inputmode="decimal" min="0" max="99" step="1" value="30"></div>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="results" aria-live="polite">
+        <h2 style="font-size:1.4rem">Results</h2>
+        <table>
+          <tbody>
+            <tr><th scope="row">Order total</th><td id="out-orderTotal"></td></tr>
+            <tr><th scope="row">Listing fee</th><td id="out-listing"></td></tr>
+            <tr><th scope="row">Transaction fee</th><td id="out-transaction"></td></tr>
+            <tr><th scope="row">Payment processing fee</th><td id="out-processing"></td></tr>
+            <tr><th scope="row">Regulatory operating fee</th><td id="out-regulatory"></td></tr>
+            <tr><th scope="row">Offsite Ads fee</th><td id="out-offsiteAds"></td></tr>
+            <tr class="total"><th scope="row">Total Etsy fees</th><td id="out-totalFees"></td></tr>
+            <tr><th scope="row">Item costs</th><td id="out-itemCost"></td></tr>
+            <tr><th scope="row">Your shipping cost</th><td id="out-shippingCost"></td></tr>
+            <tr class="big"><th scope="row">Net profit</th><td id="out-netProfit"></td></tr>
+            <tr class="total"><th scope="row">Margin</th><td id="out-margin"></td></tr>
+            <tr><th scope="row">Item price for target margin</th><td id="out-breakEvenPrice"></td></tr>
+          </tbody>
+        </table>
+        <div class="notice">These rates are editable estimates, not official figures. Etsy changes fees and they vary by country — verify your rates at <a href="https://www.etsy.com/legal/fees" rel="noopener">etsy.com/legal/fees</a>. Sales tax, currency conversion and shipping label fees are not included.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-fees-work" class="alt">
+    <div class="wrap narrow prose">
+      <h2 style="margin-top:0">How Etsy fees work</h2>
+      <p>Etsy doesn't take one fee per sale. It takes several small ones, each calculated on a slightly different amount. Here is what each line in the calculator means.</p>
+
+      <h3>Listing fee</h3>
+      <p>Every listing costs $0.20 to publish and stays live for four months. When an item sells, Etsy automatically renews the listing and charges another $0.20 — so in practice you pay $0.20 for each item sold. If a buyer orders three of the same item, that's three renewals, or $0.60. Sellers outside the US are billed the equivalent in their own currency.</p>
+
+      <h3>Transaction fee</h3>
+      <p>Etsy charges 6.5% of the total you charge the buyer: the item price plus shipping and gift wrapping, after any discount. Many sellers forget that shipping is included. Charging $5 for shipping costs you about $0.33 in transaction fees, even if the label costs you the full $5.</p>
+
+      <h3>Payment processing fee</h3>
+      <p>If you use Etsy Payments, there's a processing fee on the full order total. It depends on where your bank account is: in the US it's 3% plus $0.25 per order; in the UK it's 4% plus £0.20; in most of the EU, 4% plus €0.30; in Canada, 3% plus C$0.25; in Australia, 3% plus A$0.25. The fixed part is charged once per order, not per item, which is why small orders lose a bigger share to fees.</p>
+
+      <h3>Regulatory operating fee</h3>
+      <p>Sellers based in the UK, France, Italy, Spain, Canada, Türkiye, India, Vietnam and Hungary pay an extra percentage on each order to cover local regulation costs. The rate differs by country and has changed over time, so the calculator leaves it at 0% until you enter your current rate from Etsy's fee page.</p>
+
+      <h3>Offsite Ads fee</h3>
+      <p>Etsy advertises listings on Google, social media and other sites. If a buyer clicks one of those ads and buys from your shop within 30 days, you pay an Offsite Ads fee on the order total: 15% for most shops, or a reduced 12% for shops that made more than $10,000 in the past 12 months (those shops can't opt out). The fee is capped at $100 per order. It's the one that can quietly erase the profit on a sale, so it's worth checking how your prices hold up with it switched on.</p>
+
+      <h2>A worked example</h2>
+      <p>A US seller sells one item for $25 and charges $5 shipping. The item costs $6 to make and the shipping label costs $4.50. The order total is $30.</p>
+      <table>
+        <tbody>
+          <tr><td>Listing fee (1 item × $0.20)</td><td>$0.20</td></tr>
+          <tr><td>Transaction fee (6.5% × $30)</td><td>$1.95</td></tr>
+          <tr><td>Processing fee (3% × $30 + $0.25)</td><td>$1.15</td></tr>
+          <tr><th>Total Etsy fees</th><td><strong>$3.30</strong></td></tr>
+          <tr><td>Item cost + shipping label</td><td>$10.50</td></tr>
+          <tr><th>Net profit ($30 − $3.30 − $10.50)</th><td><strong>$16.20</strong></td></tr>
+          <tr><td>Margin ($16.20 ÷ $30)</td><td>54%</td></tr>
+        </tbody>
+      </table>
+      <p>Now say the same sale came through Offsite Ads at 15%. That adds 15% × $30 = $4.50 in fees. Total fees rise to $7.80 and net profit drops to $11.70, a 39% margin. One setting, and nearly a third of the profit is gone.</p>
+      <p>That's why the calculator also gives you a price for a target margin. Enter the margin you want and it works backwards through every percentage fee to find the item price that gets you there.</p>
+
+      <div class="cta-box">
+        <h3>Track this for every order automatically</h3>
+        <p>The Shop Profit Tracker spreadsheet does this math for every order you log, adds your other expenses, and shows your real profit and a tax set-aside each month. Works in Excel, Google Sheets and Numbers. $17 one-time.</p>
+        <a class="btn btn-ghost" href="../">See the Shop Profit Tracker</a>
+      </div>
+      <p class="fine" style="margin-top:24px">TallyThread is not affiliated with or endorsed by Etsy, Inc. Fee information is a general guide; Etsy's <a href="https://www.etsy.com/legal/fees" rel="noopener">official fee page</a> is the source of truth.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="../">Shop Profit Tracker</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../terms.html">Terms</a>
+      <a href="mailto:bernardo.carvalho20@outlook.com">Contact</a>
+    </nav>
+    <p>© TallyThread. Not affiliated with or endorsed by Etsy, Inc.</p>
+  </div>
+</footer>
+<script src="calc.js"></script>
+</body>
+</html>

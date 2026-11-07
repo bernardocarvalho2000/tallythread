@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+~$*.xlsx
+product/
+marketing/
+LOG.md
+ops/metrics.csv
